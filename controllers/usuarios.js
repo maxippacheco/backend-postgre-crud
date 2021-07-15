@@ -10,9 +10,15 @@ const getUsuarios = async(req, res) => {
 const getUsuarioById = async(req, res) => {
 	
 	const { id } = req.params;
-	const userById = await pool.query('SELECT * FROM users WHERE id = $1', [id])
+	const { rows } = await pool.query('SELECT * FROM users WHERE id = $1', [id])
 
-	res.json(userById);
+	if ( rows.length === 0 ) {
+		return res.status(400).json({ 
+			error: {msg: ` The id ${ id } doesn't exists `, rows} 
+		}) 
+	}
+
+	res.json( rows );
 
 
 }

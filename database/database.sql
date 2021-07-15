@@ -10,3 +10,13 @@ CREATE TABLE users(
 INSERT INTO users(name, email, password) VALUES
 	('joe', 'joe@test.com', 'password'),
 	('saymon', 'saymon@test.com', 'password');
+
+
+CREATE TABLE categories(
+	name TEXT,
+	id SERIAL PRIMARY KEY
+);
+
+INSERT INTO categories( name ) VALUES
+	('Maths'),
+	('Computer Science');
