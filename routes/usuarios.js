@@ -18,7 +18,11 @@ router.post('/', [
 	validarCampos
 ] ,crearUsuarios);
 
-router.put('/:id', updateUsuario);
+router.put('/:id', [
+	check('name').notEmpty(),
+	check('email').notEmpty(),
+	validarCampos
+] , updateUsuario);
 
 router.delete('/:id', deleteUsuario);
 

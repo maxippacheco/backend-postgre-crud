@@ -9,7 +9,8 @@ class Server{
 		this.port = process.env.PORT;
 		this.apiPaths = {
 			usuarios: '/api/usuarios',
-			auth: '/api/auth'
+			auth: '/api/auth',
+			categories: '/api/categories'
 		}
 
 		this.middlewares();
@@ -24,6 +25,7 @@ class Server{
 	routes(){
 		this.app.use(this.apiPaths.usuarios, require('../routes/usuarios'));
 		this.app.use(this.apiPaths.auth, require('../routes/auth'));
+		this.app.use(this.apiPaths.categories, require('../routes/categories'));
 	}
 
 	listen(){
